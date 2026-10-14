@@ -3,30 +3,208 @@
 }
 
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.5;
+margin: 0;
+min-width: 320px;
+font-family:
+Inter,
+Arial,
+Helvetica,
+sans-serif;
+background: var(--background);
+color: var(--text);
 }
+/* LOGIN */
+.login-page {
+min-height: 100vh;
+display: grid;
+grid-template-columns:
+1.2fr 1fr;
+background:
+linear-gradient(
 
-.container {
-  width: min(1200px, 92%);
-  margin-inline: auto;
+135deg,
+#312e81,
+#4f46e5,
+#0891b2
+);
 }
-
-.header {
-  border-bottom: 1px solid #ddd;
-  padding: 1rem 0;
+.login-presentation {
+padding: 6rem;
+color: white;
+display: flex;
+flex-direction: column;
+justify-content: center;
 }
-
-.header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.login-presentation h2 {
+font-size: clamp(
+2.5rem,
+5vw,
+5rem
+);
+margin: 1rem 0;
 }
+.presentation-tag {
+width: fit-content;
+background:
+rgba(255, 255, 255, 0.16);
+padding:
+0.6rem 1rem;
+border-radius:
+999px;
+}
+.presentation-features {
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+margin-top: 2rem;
+}
+.presentation-features span {
+background:
+rgba(255, 255, 255, 0.12);
+padding:
+0.75rem 1rem;
+border-radius:
+0.75rem;
+}
+.login-container {
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 2rem;
+}
+.login-form {
+width: min(
+440px,
+100%
 
-nav {
-  display: flex;
-  gap: 1rem;
+);
+background:
+white;
+border-radius:
+1.5rem;
+padding: 2.5rem;
+box-shadow:
+0 25px 60px
+rgba(15, 23, 42, 0.25);
+}
+.form-header {
+text-align: center;
+margin-bottom: 2rem;
+}
+.login-icon {
+font-size: 3rem;
+}
+.field {
+margin-bottom: 1.25rem;
+}
+.field label {
+display: block;
+font-weight: 700;
+margin-bottom:
+0.5rem;
+}
+.field input {
+width: 100%;
+padding:
+0.9rem 1rem;
+border:
+1px solid var(--border);
+border-radius:
+0.7rem;
+font-size: 1rem;
+}
+.field input:focus {
+outline:
+3px solid
+rgba(79, 70, 229, 0.15);
+border-color:
+var(--primary);
+}
+.btn {
+border: 0;
+border-radius:
+0.7rem;
+padding:
+0.9rem 1.25rem;
+font-weight: 700;
+cursor: pointer;
+}
+.btn-primary {
+width: 100%;
+
+color: white;
+background:
+linear-gradient(
+90deg,
+var(--primary),
+var(--secondary)
+);
+}
+.btn-primary:hover {
+transform:
+translateY(-1px);
+}
+.btn:disabled {
+opacity: 0.6;
+cursor: not-allowed;
+}
+.form-message.error {
+background:
+#fee2e2;
+color:
+var(--danger);
+padding:
+0.75rem;
+border-radius:
+0.5rem;
+}
+/* HEADER */
+.app-header {
+min-height:
+72px;
+padding:
+0.8rem 2rem;
+display: flex;
+align-items: center;
+justify-content:
+space-between;
+gap: 2rem;
+background:
+white;
+box-shadow:
+0 2px 15px
+rgba(15, 23, 42, 0.08);
+}
+.header-brand {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+}
+.brand-icon {
+width: 44px;
+height: 44px;
+display: grid;
+place-items: center;
+
+border-radius:
+0.7rem;
+font-weight: 900;
+color: white;
+background:
+linear-gradient(
+135deg,
+var(--green),
+var(--secondary)
+);
+}
+.header-brand small {
+display: block;
+color:
+var(--muted);
+}
+.nav-links {
+display: flex;
+gap: 1rem;
 }
 
 .section-header {
@@ -49,16 +227,81 @@ nav {
   border-radius: 0.75rem;
   padding: 1.5rem;
 }
-
-.service-card button {
-  cursor: pointer;
-  padding: 0.7rem 1rem;
+.card-green {
+background:
+linear-gradient(
+135deg,
+#059669,
+#0891b2
+);
 }
+.card-orange {
+background:
+linear-gradient(
+135deg,
+#ea580c,
+#db2777
+);
+}
+.card-icon {
+font-size:
+2.5rem;
+}
+.card-link {
+display:
+inline-block;
+margin-top:
+1rem;
+color:
 
-@media (max-width: 700px) {
-  .header .container,
-  .section-header {
-    flex-direction: column;
-    align-items: stretch;
-  }
+white;
+font-weight:
+700;
+}
+/* RESPONSIVE */
+@media (
+max-width: 900px
+) {
+.login-page {
+grid-template-columns:
+1fr;
+}
+.login-presentation {
+padding:
+3rem 2rem;
+}
+.dashboard-grid {
+grid-template-columns:
+1fr 1fr;
+}
+.hero-icon {
+display:
+none;
+}
+}
+@media (
+max-width: 650px
+) {
+.app-header {
+align-items:
+stretch;
+flex-direction:
+column;
+}
+.nav-links {
+flex-direction:
+column;
+}
+.header-user {
+justify-content:
+space-between;
+}
+.dashboard-grid {
+grid-template-columns:
+1fr;
+}
+.dashboard-hero {
+padding:
+1.5rem;
+}
 }
