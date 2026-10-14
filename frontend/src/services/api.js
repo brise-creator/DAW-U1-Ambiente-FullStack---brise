@@ -1,5 +1,4 @@
 const API_URL = '/api'
-
 export async function obtenerServicios() {
 const response = await fetch(
 `${API_URL}/servicios.php`,
