@@ -1,43 +1,55 @@
+<script setup>
+import { useAuth } from '../services/auth.js'
+
+const { authenticated } = useAuth()
+</script>
+
 <template>
   <section class="home">
-    <h2>Inicio</h2>
+    <div class="home-copy">
+      <p class="home-eyebrow">Servicios Web</p>
+      <h2>
+        Soluciones digitales
+        <span>para avanzar.</span>
+      </h2>
+      <p>
+        Explora nuestro catálogo de servicios tecnológicos y encuentra el apoyo
+        que necesitas para llevar tus proyectos al siguiente nivel.
+      </p>
+      <div class="home-actions">
+        <RouterLink to="/servicios" class="home-button primary">
+          Explorar servicios
+          <span aria-hidden="true">&nbsp;→</span>
+        </RouterLink>
+        <RouterLink
+          v-if="!authenticated"
+          to="/login"
+          class="home-button secondary"
+        >
+          Iniciar sesión
+        </RouterLink>
+        <RouterLink
+          v-else
+          to="/dashboard"
+          class="home-button secondary"
+        >
+          Ir a mi panel
+        </RouterLink>
+      </div>
+    </div>
 
-    <p>
-      Bienvenido a la aplicación web desarrollada con Vue.
-    </p>
-
-    <p>
-      Desde esta plataforma puedes consultar los servicios
-      disponibles y visualizar su información.
-    </p>
-
-    <RouterLink
-      to="/servicios"
-      class="button"
-    >
-      Ver servicios
-    </RouterLink>
+    <div class="home-art" aria-hidden="true">
+      <article class="home-art-card">
+        <span class="home-art-label">Tu próximo proyecto</span>
+        <h3>Ideas que se convierten en resultados.</h3>
+        <p>Un equipo listo para ayudarte a crecer.</p>
+        <div class="home-art-line"></div>
+        <div class="home-art-line short"></div>
+        <div class="home-art-footer">
+          <span class="home-art-dot"></span>
+          <span>Servicios disponibles</span>
+        </div>
+      </article>
+    </div>
   </section>
 </template>
-
-<style scoped>
-.home {
-  padding: 2rem 0;
-}
-
-.home h2 {
-  margin-bottom: 1rem;
-}
-
-.home p {
-  margin-bottom: 1rem;
-}
-
-.button {
-  display: inline-block;
-  padding: 0.75rem 1.25rem;
-  text-decoration: none;
-  border: 1px solid #333;
-  border-radius: 0.5rem;
-}
-</style>

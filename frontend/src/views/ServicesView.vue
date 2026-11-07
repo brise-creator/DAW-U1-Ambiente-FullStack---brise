@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import ServiceCard from '../components/ServiceCard.vue'
-import { obtenerServicios } from '../services/api'
+import { listarServicios } from '../services/servicesApi.js'
 
 const servicios = ref([])
 const busqueda = ref('')
@@ -16,15 +16,22 @@ const serviciosFiltrados = computed(() => {
   )
 })
 
-onMounted(async () => {
+async function cargarServicios() {
+  cargando.value = true
+  error.value = ''
+
   try {
-    servicios.value = await obtenerServicios()
+    servicios.value = await listarServicios()
   } catch (e) {
-    error.value = e.message
+    error.value = e instanceof Error
+      ? e.message
+      : 'No fue posible cargar los servicios.'
   } finally {
     cargando.value = false
   }
-})
+}
+
+onMounted(cargarServicios)
 </script>
 
 <template>
@@ -61,6 +68,12 @@ onMounted(async () => {
       role="alert"
     >
       {{ error }}
+      <button
+        type="button"
+        @click="cargarServicios"
+      >
+        Reintentar
+      </button>
     </p>
 
     <p
